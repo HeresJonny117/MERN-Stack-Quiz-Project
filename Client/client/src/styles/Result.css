@@ -1,0 +1,65 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #7a7a7a; 
+    padding: 3em 4em;
+    gap: 1em;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.container .flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .flex span {
+    font-size: 1.4em;
+    color: #7a7a7a; 
+}
+
+.container .flex span.achieve {
+    font-weight: bold;
+    color: #e63946; 
+}
+
+.container .flex span.achieve.passed {
+    color: #2a9d8f; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5em;
+}
+
+.table-header {
+    color: #fff;
+    font-size: 1.1em;
+    text-align: center;
+    background: #333; 
+    padding: 18px 0;
+}
+
+.table-body {
+    font-size: 1.1em;
+    text-align: center;
+    background: #eaeaea; 
+    color: #333;
+    padding: 18px 0;
+}
+
+.table-header > tr > td {
+    border: 1px solid #ffd700; 
+}
+
+.table-body > tr:nth-child(even) {
+    background: #d1d1d1; 
+}
+
+.table-body > tr:hover {
+    background: #ffd700; 
+    color: #202020;
+    transition: background 0.3s ease;
+}

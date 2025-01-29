@@ -3,19 +3,20 @@ import { useDispatch } from "react-redux";
 import { getServerData } from "../helper/helper";
 import * as Action from "../redux/question_reducer";
 
-/** fetch question hook to fetch api data and set value to store */
-export const useFetchQestion = () => {
+
+export const useFetchQuestion = () => {
     const dispatch = useDispatch();
-    const [getData, setGetData] = useState({
+    const [dataState, setDataState] = useState({
         isLoading: false,
         apiData: [],
         serverError: null,
     });
 
     useEffect(() => {
-        setGetData((prev) => ({ ...prev, isLoading: true }));
+        
+        setDataState((prevState) => ({ ...prevState, isLoading: true }));
 
-        (async () => {
+        const fetchData = async () => {
             try {
                 const [{ questions, answers }] = await getServerData(
                     `http://localhost:${process.env.PORT || 5000}/api/questions`,
@@ -23,35 +24,43 @@ export const useFetchQestion = () => {
                 );
 
                 if (questions.length > 0) {
-                    setGetData((prev) => ({ ...prev, isLoading: false }));
-                    setGetData((prev) => ({ ...prev, apiData: questions }));
+                    
+                    setDataState({ isLoading: false, apiData: questions, serverError: null });
 
-                    /** dispatch an action */
+                    
                     dispatch(Action.startExamAction({ question: questions, answers }));
                 } else {
-                    throw new Error("No Question Available");
+                    throw new Error("No questions available.");
                 }
             } catch (error) {
-                setGetData((prev) => ({ ...prev, isLoading: false }));
-                setGetData((prev) => ({ ...prev, serverError: error.message }));
+                
+                setDataState({
+                    isLoading: false,
+                    apiData: [],
+                    serverError: error.message,
+                });
             }
-        })();
+        };
+
+        fetchData();
     }, [dispatch]);
 
-    return [getData, setGetData];
+    return [dataState, setDataState];
 };
 
-export const MoveNextQuestion = () => (dispatch) => {
+
+export const moveNextQuestion = () => (dispatch) => {
     try {
-        dispatch(Action.moveNextAction()); 
+        dispatch(Action.moveNextAction());
     } catch (error) {
         console.error("Error moving to next question:", error);
     }
 };
 
-export const MovePrevQuestion = () => (dispatch) => {
+
+export const movePrevQuestion = () => (dispatch) => {
     try {
-        dispatch(Action.movePrevAction()); 
+        dispatch(Action.movePrevAction());
     } catch (error) {
         console.error("Error moving to previous question:", error);
     }
