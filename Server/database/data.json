@@ -1,0 +1,8 @@
+[
+  { "question": "What color is the moon?" },
+  {
+    "question": "What is the name of Charlie Brown's Dog?",
+    "options": ["Spike", "Snoopy", "Olaf"],
+    "answer": "Snoopy"
+  }
+]
