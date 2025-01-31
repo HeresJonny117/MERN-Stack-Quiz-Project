@@ -62,7 +62,7 @@ Steps
 
 Clone the repository:
 
-git clone https://github.com/your-username/mern-quiz-app.git
+git clone https://github.com/HeresJonny117/MERN-Stack-Quiz-Project
 cd mern-quiz-app
 
 Install dependencies:
@@ -125,7 +125,7 @@ GET /api/leaderboard - Retrieve top scores
 
 Contributing
 
-
+Nico https://github.com/Nico-Jimene , Kevin https://github.com/kevingarts , Jon https://github.com/HeresJonny117
 
 Feel free to contribute by opening issues or submitting pull requests.
 
