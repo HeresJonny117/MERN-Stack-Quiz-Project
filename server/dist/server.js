@@ -1,10 +1,10 @@
-import express from '../node_modules/@types/express/index.js';
+import express from 'express';
 import path from 'node:path';
 import db from './database/connection.js';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
-import typeDefs from './schemas/typeDefs';
-import resolvers from './schemas/resolvers';
+import typeDefs from './schemas/typeDefs.js';
+import resolvers from './schemas/resolvers.js';
 import { authenticateToken } from './utils/auth.js';
 const server = new ApolloServer({
     typeDefs,
